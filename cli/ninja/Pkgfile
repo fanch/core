@@ -1,4 +1,4 @@
-# Depends on: python
+# Depends on: python2 asciidoc
 
 description="Cross-platform IDE focused on Python application development"
 url="http://martine.github.io/ninja/"
@@ -8,14 +8,17 @@ packager="tnut <tnut@nutyx.org>"
 
 name=ninja
 version=1.8.2
+release=2
 
 source=(https://github.com/ninja-build/$name/archive/v$version/$name-$version.tar.gz)
 	
 build() {
 
 	cd $name-$version
-	python3 configure.py --bootstrap
-	
+	sed -e "s|subprocess.check_call(rebuild_args)|pass|" -i configure.py
+	python2 configure.py --bootstrap
+	python2 configure.py
+	asciidoc doc/manual.asciidoc
 	install -m755 -D ninja $PKG/usr/bin/ninja
 	install -m644 -D misc/bash-completion $PKG/usr/share/bash-completion/completions/ninja
 	install -m644 -D misc/zsh-completion  $PKG/usr/share/zsh/site-functions/_ninja

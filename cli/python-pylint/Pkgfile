@@ -7,7 +7,7 @@ packager="tnut <tnut@nutyx.org>"
 alias=(pylint)
 
 name=python-pylint
-version=1.6.4
+version=1.8.2
 release=1
 
 build() {

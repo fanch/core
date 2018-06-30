@@ -7,7 +7,7 @@ contributors="Fanch"
 packager="tnut <tnut@nutyx.org>"
 name=brotli
 version=1.0.2
-release=2
+release=1
 
 source=()
 
